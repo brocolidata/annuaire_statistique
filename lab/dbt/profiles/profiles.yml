@@ -1,0 +1,10 @@
+dataplatform_local:
+  target: prod
+  outputs:
+    prod:
+      type: duckdb
+      path: "{{ env_var('DUCKDB_DATA') }}/dbt.duckdb"
+      database: dbt
+      extensions:
+        - httpfs
+        - parquet
