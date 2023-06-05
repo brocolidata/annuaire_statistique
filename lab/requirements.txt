@@ -1,0 +1,4 @@
+hydra-core
+openpyxl
+rarfile
+duckdb-engine

@@ -33,4 +33,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dataplatform:
-    # Config indicated by + and applies to all files under models/example/
+    stg:
+      +database: "stg"
+      # indice_des_prix:
+      #   +schema: "indice_des_prix"
+    ods:
+      +database: "ods"
+      # indice_des_prix:
+      #   +schema: "indice_des_prix"

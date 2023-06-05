@@ -1,0 +1,7 @@
+**/target/**
+
+duckdb_data/**
+
+dwh_data/**
+
+dbt/profiles/.user.yml

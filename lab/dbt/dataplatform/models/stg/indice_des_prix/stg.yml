@@ -1,0 +1,21 @@
+models:
+  - name: ipp_v1_stg
+    description: ""
+    columns:
+      - name: libelle_fr
+        description: ""
+
+      - name: libelle_ar
+        description: ""
+
+      - name: "2019"
+        description: ""
+
+      - name: "2018"
+        description: ""
+
+      - name: "2017"
+        description: ""
+
+      - name: "2016"
+        description: ""
