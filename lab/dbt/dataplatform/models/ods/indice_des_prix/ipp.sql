@@ -2,7 +2,7 @@
 {{ 
     config(
         materialized='external',
-        location="{{ env_var('DWH_DATA') }}/ods/indice_des_prix/ipp.parquet"
+        location="{{ env_var('DWH_DATA') }}/{{ model.config.database }}/{{ model.config.group }}/{{ model.name }}.csv"
     ) 
 }}
 
@@ -30,7 +30,12 @@ ipp as (
         libelle_fr,
         libelle_ar,
         year::integer as year,
-        value
+        value,
+        {# TODO: extract base_year from source instead of hardcoding it #}
+        case
+            when year::integer < 2020 then 2010
+            else 2018
+        end as base_year
     from pivoted_ipp
 )
 
