@@ -2,7 +2,7 @@
 {{ 
     config(
         materialized='external',
-        location="{{ env_var('DWH_DATA') }}/ods/indice_des_prix/ipp.parquet"
+        location="{{ env_var('DWH_DATA') }}/{{ model.config.database }}/{{ model.config.group }}/{{ model.name }}.parquet"
     ) 
 }}
 

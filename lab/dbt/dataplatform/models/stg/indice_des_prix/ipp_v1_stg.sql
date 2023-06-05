@@ -1,7 +1,7 @@
 {{ 
     config(
         materialized='external',
-        location="{{ env_var('DWH_DATA') }}/stg/indice_des_prix/base_ipp_v1.parquet"
+        location="{{ env_var('DWH_DATA') }}/{{ model.config.database }}/{{ model.config.group }}/{{ model.name }}.parquet"
     ) 
 }}
 
@@ -11,12 +11,12 @@ with source as (
 ),
 renamed as (
     select
-        libelle_fr,
-        libelle_ar,
-        "2019",
-        "2018",
-        "2017",
-        "2016"
+        libelle_fr::varchar as libelle_fr,
+        libelle_ar::varchar as libelle_ar,
+        round("2019", 1) as "2019",
+        round("2018", 1) as "2018",
+        round("2017", 1) as "2017",
+        round("2016", 1) as "2016"
     from source
 )
 select * from renamed
