@@ -12,6 +12,12 @@ on:
     - 'lab/dbt/dataplatform/**.yml'
     - 'lab/dbt/dataplatform/**.md'
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+
 
 jobs:
   deploy:
@@ -21,6 +27,7 @@ jobs:
       DBT_PROJECT_DIR: ${{ github.workspace }}/lab/dbt/dataplatform
       DBT_PROFILES_DIR: ${{ github.workspace }}/lab/dbt/profiles
       DBT_TARGET_PATH: ${{ github.workspace }}/lab/dbt/dataplatform/target
+      SITE_PATH: ${{ github.workspace }}/site
       DUCKDB_DATA: ${{ github.workspace }}/lab/duckdb_data
       DWH_DATA: ${{ github.workspace }}/lab/dwh_data
     steps:
@@ -56,10 +63,17 @@ jobs:
     - name: 'Generate & Deploy Data Catalog'
       run: dbt docs generate
       
+    - name: 'Move generated files to _site'
+      run: |
+        mkdir ${{ env.SITE_PATH }}
+        mv ${{ env.DBT_TARGET_PATH }}/index.html ${{ env.SITE_PATH }}/
+        mv ${{ env.DBT_TARGET_PATH }}/catalog.json ${{ env.SITE_PATH }}/
+        mv ${{ env.DBT_TARGET_PATH }}/manifest.json ${{ env.SITE_PATH }}/
+      
     - name: 'Upload GitHub Pages artifact'
       uses: actions/upload-pages-artifact@v1.0.8
       with:
-        path: ${{ env.DBT_TARGET_PATH }}
+        path: ${{ env.SITE_PATH }}
         
     - name: 'Deploy GitHub Pages site'
       uses: actions/deploy-pages@v2.0.1
