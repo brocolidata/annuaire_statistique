@@ -2,6 +2,8 @@
 
 duckdb_data/**
 
-dwh_data/**
+dwh_data/**/*.parquet
+dwh_data/**/*.xls
+dwh_data/**/*.xlsx
 
 dbt/profiles/.user.yml
