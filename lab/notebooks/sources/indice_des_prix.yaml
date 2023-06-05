@@ -27,10 +27,10 @@ datasets:
     config:
       data_end_row: 41
     years: 
-    - year: 2019 
-      config:
-        skipfooter: 13
-    - year: 2020
+      2019: 
+      2020:
+        config:
+          skipfooter: 13
   - version: 2
     config:
       data_end_row: 42
