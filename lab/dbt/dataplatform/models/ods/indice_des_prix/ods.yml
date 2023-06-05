@@ -24,3 +24,8 @@ models:
         description: "Value of the record"
         tests:
           - not_null
+
+      - name: base_year
+        description: "Base year of the index (Base 100)"
+        tests:
+          - not_null
