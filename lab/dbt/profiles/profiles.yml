@@ -8,3 +8,12 @@ dataplatform_local:
       extensions:
         - httpfs
         - parquet
+      attach:
+        - path: "{{ env_var('DUCKDB_DATA') }}/stg_duck.db"
+          alias: "stg"
+        - path: "{{ env_var('DUCKDB_DATA') }}/ods_duck.db"
+          alias: "ods"
+        # - path: "{{ env_var('DUCKDB_DATA') }}/raw_duck.db"
+        #   alias: raw
+        #   read_only: true
+          

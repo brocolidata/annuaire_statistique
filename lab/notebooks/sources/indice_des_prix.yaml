@@ -1,0 +1,66 @@
+
+name: "Indice des Prix"
+schema: "indice_des_prix"
+file_names:
+  2022: "17. Indice des prix _AS 2022.xlsx"
+  2021: "17.1 Indice des prix 2021.xlsx"
+  2020: "17.Indice des prix - S.A 2020.xlsx"
+  2019: "16.1 Indice des prix 2019.xlsx"
+datasets:
+- name: "Indice des prix à la production industrielle,énergétique et minière"
+  table_name: "ipp"
+  config:
+    sheet_name: "ipp"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 14
+    header_row: 6
+    data_start_row: 9
+    data_end_row: 42
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      data_end_row: 41
+    years: 
+    - year: 2019 
+      config:
+        skipfooter: 13
+    - year: 2020
+  - version: 2
+    config:
+      data_end_row: 42
+    years:
+    - year: 2021
+    - year: 2022
+    
+  
+# - name: "Indice des prix à la consommation : Milieu urbain"
+# - name: "Indice des prix à la consommation : ville d’Agadir"
+# - name: "Indice des prix à la consommation : ville de Casablanca"
+# - name: "Indice des prix à la consommation : ville de Fès"
+# - name: "Indice des prix à la consommation : ville de Kénitra"
+# - name: "Indice des prix à la consommation : ville de Marrakech"
+# - name: "Indice des prix à la consommation : ville d'Oujda"
+# - name: "Indice des prix à la consommation : ville de Rabat"
+# - name: "Indice des prix à la consommation : ville  de Tétouan"
+# - name: "Indice des prix à la consommation : ville de Meknès"
+# - name: "Indice des prix à la consommation : ville de Tanger"
+# - name: "Indice des prix à la consommation : ville de Laâyoune"
+# - name: "Indice des prix à la consommation : ville de  Dakhla"
+# - name: "Indice des prix à la consommation : ville de Guelmim"
+# - name: "Indice des prix à la consommation : ville de Settat"
+# - name: "Indice des prix à la consommation : ville de Safi"
+# - name: "Indice des prix à la consommation : ville de Béni Mellal"
+# - name: "Indice des prix à la consommation : ville de Al Hoceima"
+# - name: "Indice des prix à la consommation :ville de Errachidia"
+# - name: "Prix moyens de détail observés pour certains produits dans la ville de Casablanca"
+# - name: "Prix moyens de détail observés pour certains services dans la ville de Casablanca"
+# - name: "Prix réglementés pour certains produits de tabac"
+# - name: "Prix de vente du butane"
+# - name: "Prix réglementés dans le secteur de l’énergie : tarifs  de l’électricité"
+# - name: "Prix réglementés de l’eau potable"
