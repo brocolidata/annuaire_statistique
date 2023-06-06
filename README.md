@@ -1,14 +1,16 @@
-# Data Platform Lab
-A Data Platform in a Development Container, batteries-included.
+# Annuaire Statistique
 
-![Data Platform Lab](data_platform_lab.jpg)
+[![Open in Codespace](https://img.shields.io/static/v1?label=Codespace&message=Open&color=blue&logo=github)](https://github.com/codespaces/new?template_repository=brocolidata/annuaire_statistique)
 
-[![Create Repository from template](https://img.shields.io/static/v1?label=GitHub&message=Create%20Repository&color=blue&logo=github)](https://github.com/brocolidata/dataplatform_lab/generate)
-[![Open in Codespace](https://img.shields.io/static/v1?label=Codespace&message=Open&color=blue&logo=github)](https://github.com/codespaces/new?template_repository=brocolidata/dataplatform_lab)
-[![Push Docker Image](https://github.com/brocolidata/dataplatform_lab/actions/workflows/docker-publish.yml/badge.svg?branch=main)](https://github.com/brocolidata/dataplatform_lab/actions/workflows/docker-publish.yml)
+Curated moroccan data from HCP's statistical yearbook (*Annuaire statistique*)
+
+**Source** : [hcp.ma](https://www.hcp.ma/downloads/?tag=Annuaires+statistiques+du+Maroc+%28Format+Excel%29)
+
+**See our [(dbt) Data Catalog](https://brocolidata.github.io/annuaire_statistique/)**
 
 
-A one-click Data Platform with : 
+
+We use a Data Platform composed of : 
 - Jupyter notebooks for extracting & loading data.
 - [dbt](https://www.getdbt.com) for data transformation.
 - [DuckDB](https://duckdb.org) as a (in-process) DataWarehouse.
