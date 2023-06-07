@@ -3,7 +3,11 @@ models:
     access: public
     config:
       group: indice_des_prix
-    description: "Industrial, energy and mining producer price index"
+    description: >
+      Industrial, energy and mining producer price index
+
+      
+      [Preview data in GitHub](https://github.com/brocolidata/annuaire_statistique/blob/main/lab/dwh_data/ods/indice_des_prix/ipp.csv)
     columns:
       - name: libelle_fr
         description: "French label"
