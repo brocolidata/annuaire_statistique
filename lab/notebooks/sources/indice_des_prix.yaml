@@ -32,11 +32,12 @@ datasets:
         config:
           skipfooter: 13
   - version: 2
-    config:
-      data_end_row: 42
     years:
-    - year: 2021
-    - year: 2022
+      2021:
+        config:
+          dimension_cols_index: [0,3]
+          historic_years: 2
+      2022: 
     
   
 # - name: "Indice des prix à la consommation : Milieu urbain"
