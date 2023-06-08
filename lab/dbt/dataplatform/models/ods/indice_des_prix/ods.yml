@@ -35,6 +35,9 @@ models:
           - not_null
 
   - name: ipc_national
+    access: public
+    config:
+      group: indice_des_prix
     description: >
       Consumer Price Index in moroccan urban areas
 

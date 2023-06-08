@@ -56,6 +56,8 @@ models:
           - not_null
   
   - name: ipc_national_v1_stg
+    config:
+      group: indice_des_prix
     description: >
       Consumer Price Index in moroccan urban areas (2019)
 
@@ -85,6 +87,8 @@ models:
           - not_null
 
   - name: ipc_national_v2_stg
+    config:
+      group: indice_des_prix
     description: >
       Consumer Price Index in moroccan urban areas (2020-2022)
 
