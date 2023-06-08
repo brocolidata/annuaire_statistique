@@ -1,8 +1,9 @@
 models:
   - name: ipp_v1_stg
-    config:
-      group: indice_des_prix
-    description: "Industrial, energy and mining producer price index (2019-2020, base 100 2010))"
+    description: >
+      Industrial, energy and mining producer price index (2019-2020)
+
+      - **Base 100** : 2010
     columns:
       - name: libelle_fr
         description: "French label"
@@ -30,9 +31,10 @@ models:
           - not_null
 
   - name: ipp_v2_stg
-    config:
-      group: indice_des_prix
-    description: "Industrial, energy and mining producer price index (2021-2022, base 100 2018)"
+    description: >
+      Industrial, energy and mining producer price index (2021-2022)
+
+      - **Base 100** : 2018
     columns:
       - name: libelle_fr
         description: "French label"
@@ -56,14 +58,12 @@ models:
           - not_null
   
   - name: ipc_national_v1_stg
-    config:
-      group: indice_des_prix
     description: >
       Consumer Price Index in moroccan urban areas (2019)
+      
+      - **Base 100** : 2006
 
-      **Base 100** : 2006
-
-      **Elements in market basket** : 478
+      - **Elements in market basket** : 478
     columns:
       - name: libelle_fr
         description: "French label"
@@ -87,14 +87,12 @@ models:
           - not_null
 
   - name: ipc_national_v2_stg
-    config:
-      group: indice_des_prix
     description: >
       Consumer Price Index in moroccan urban areas (2020-2022)
 
-      **Base 100** : 2017
+      - **Base 100** : 2017
 
-      **Elements in market basket** : 546
+      - **Elements in market basket** : 546
     columns:
       - name: libelle_fr
         description: "French label"
