@@ -3,8 +3,8 @@ dataplatform_local:
   outputs:
     prod:
       type: duckdb
-      path: "{{ env_var('DUCKDB_DATA') }}/dbt.duckdb"
-      database: dbt
+      path: "{{ env_var('DUCKDB_DATA') }}/raw.duckdb"
+      database: raw
       extensions:
         - httpfs
         - parquet
@@ -13,7 +13,3 @@ dataplatform_local:
           alias: "stg"
         - path: "{{ env_var('DUCKDB_DATA') }}/ods_duck.db"
           alias: "ods"
-        # - path: "{{ env_var('DUCKDB_DATA') }}/raw_duck.db"
-        #   alias: raw
-        #   read_only: true
-          
