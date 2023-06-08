@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'dataplatform'
+name: 'annuaire_statistique'
 version: '1.0.0'
 config-version: 2
 
@@ -28,14 +28,8 @@ clean-targets:
 
 # Models configuration
 models:
-  dataplatform:
+  annuaire_statistique:
     stg:
       +database: "stg"
-      # indice_des_prix:
-        # +group: "indice_des_prix"
-        # +schema: "indice_des_prix"
     ods:
       +database: "ods"
-      # indice_des_prix:
-        # +group: "indice_des_prix"
-        # +schema: "indice_des_prix"
