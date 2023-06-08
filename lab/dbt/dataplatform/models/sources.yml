@@ -1,10 +1,17 @@
 sources:
   - name: indice_des_prix
+    description: >
+      Price Index Data in Morocco
+
+    loader: 'Jupyter Notebook'
     meta:
       external_location: "{{ env_var('DWH_DATA') }}/raw/indice_des_prix/{name}.parquet"
     tables:
       - name: ipp_v1
-        description: "Industrial, energy and mining producer price index (2019-2020, base 100 2010))"
+        description: >
+          Industrial, energy and mining producer price index (2019-2020)
+
+          - **Base 100** : 2010
         columns:
           - name: libelle_fr
             description: "French label"
@@ -31,7 +38,10 @@ sources:
             tests:
               - not_null
       - name: ipp_v2
-        description: "Industrial, energy and mining producer price index (2021-2022, base 100 2018)"
+        description: >
+          Industrial, energy and mining producer price index (2021-2022)
+
+          - **Base 100** : 2018
         columns:
           - name: libelle_fr
             description: "French label"
@@ -57,9 +67,9 @@ sources:
         description: >
           Consumer Price Index in moroccan urban areas (2019)
 
-          **Base 100** : 2006
+          - **Base 100** : 2006
 
-          **Elements in market basket** : 478
+          - **Elements in market basket** : 478
         columns:
           - name: libelle_fr
             description: "French label"
@@ -83,11 +93,11 @@ sources:
               - not_null
       - name: ipc_national_v2
         description: >
-          Consumer Price Index in urban areas (2020-2022)
+          Consumer Price Index in moroccan areas (2020-2022)
 
-          **Base 100** : 2017
+          - **Base 100** : 2017
 
-          **Elements in market basket** : 546
+          - **Elements in market basket** : 546
         columns:
           - name: libelle_fr
             description: "French label"
