@@ -16,16 +16,11 @@ datasets:
     base_year_cell: "A:6"
     skiprows: [0, 1, 2, 3, 4, 6, 7]
     skipfooter: 14
-    header_row: 6
-    data_start_row: 9
-    data_end_row: 42
     dimension_cols_index: [0,4]
     dimension_cols_rename: ["libelle_fr", "libelle_ar"]
   
   versions: 
   - version: 1
-    config:
-      data_end_row: 41
     years: 
       2019: 
       2020:
@@ -40,7 +35,32 @@ datasets:
       2022: 
     
   
-# - name: "Indice des prix à la consommation : Milieu urbain"
+- name: "Indice des prix à la consommation : Milieu urbain"
+  table_name: "ipc_national"
+  config:
+    sheet_name: "Nat "
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
 # - name: "Indice des prix à la consommation : ville d’Agadir"
 # - name: "Indice des prix à la consommation : ville de Casablanca"
 # - name: "Indice des prix à la consommation : ville de Fès"
