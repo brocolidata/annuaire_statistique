@@ -33,3 +33,25 @@ models:
         description: "Base year of the index (Base 100)"
         tests:
           - not_null
+
+  - name: ipc_national
+    description: >
+      Consumer Price Index in moroccan urban areas
+
+
+      [Preview data in GitHub](https://github.com/brocolidata/annuaire_statistique/blob/main/lab/dwh_data/ods/indice_des_prix/ipc_national.csv)
+    columns:
+      - name: libelle_fr
+        description: "French label"
+
+      - name: libelle_ar
+        description: "Arabic label"
+
+      - name: year
+        description: ""
+
+      - name: value
+        description: ""
+
+      - name: base_year
+        description: ""
