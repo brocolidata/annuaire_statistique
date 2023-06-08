@@ -46,15 +46,25 @@ models:
     columns:
       - name: libelle_fr
         description: "French label"
+        tests:
+          - not_null
 
       - name: libelle_ar
         description: "Arabic label"
+        tests:
+          - not_null
 
       - name: year
-        description: ""
+        description: "Year of the record"
+        tests:
+          - not_null
 
       - name: value
-        description: ""
+        description: "Value of the record"
+        tests:
+          - not_null
 
       - name: base_year
-        description: ""
+        description: "Base year of the index (Base 100)"
+        tests:
+          - not_null
