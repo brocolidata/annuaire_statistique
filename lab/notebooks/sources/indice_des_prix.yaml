@@ -32,9 +32,7 @@ datasets:
         config:
           dimension_cols_index: [0,3]
           historic_years: 2
-      2022: 
-    
-  
+      2022:     
 - name: "Indice des prix à la consommation : Milieu urbain"
   table_name: "ipc_national"
   config:
@@ -61,24 +59,470 @@ datasets:
           dimension_cols_index: [0,3]
       2021:
       2022: 
-# - name: "Indice des prix à la consommation : ville d’Agadir"
-# - name: "Indice des prix à la consommation : ville de Casablanca"
-# - name: "Indice des prix à la consommation : ville de Fès"
-# - name: "Indice des prix à la consommation : ville de Kénitra"
-# - name: "Indice des prix à la consommation : ville de Marrakech"
-# - name: "Indice des prix à la consommation : ville d'Oujda"
-# - name: "Indice des prix à la consommation : ville de Rabat"
-# - name: "Indice des prix à la consommation : ville  de Tétouan"
-# - name: "Indice des prix à la consommation : ville de Meknès"
-# - name: "Indice des prix à la consommation : ville de Tanger"
-# - name: "Indice des prix à la consommation : ville de Laâyoune"
-# - name: "Indice des prix à la consommation : ville de  Dakhla"
-# - name: "Indice des prix à la consommation : ville de Guelmim"
-# - name: "Indice des prix à la consommation : ville de Settat"
-# - name: "Indice des prix à la consommation : ville de Safi"
-# - name: "Indice des prix à la consommation : ville de Béni Mellal"
-# - name: "Indice des prix à la consommation : ville de Al Hoceima"
-# - name: "Indice des prix à la consommation :ville de Errachidia"
+- name: "Indice des prix à la consommation : ville d’Agadir"
+  table_name: "ipc_agadir"
+  config:
+    sheet_name: "Agad"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Casablanca"
+  table_name: "ipc_casablanca"
+  config:
+    sheet_name: "casa"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Fès"
+  table_name: "ipc_fes"
+  config:
+    sheet_name: "fes"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Kénitra"
+  table_name: "ipc_kenitra"
+  config:
+    sheet_name: "kenit"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Marrakech"
+  table_name: "ipc_marrakech"
+  config:
+    sheet_name: "marrak"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville d'Oujda"
+  table_name: "ipc_oujda"
+  config:
+    sheet_name: "oujd"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Rabat"
+  table_name: "ipc_rabat"
+  config:
+    sheet_name: "rab7"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      sheet_name: "rab"
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville  de Tétouan"
+  table_name: "ipc_tetouan"
+  config:
+    sheet_name: "tetou"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Meknès"
+  table_name: "ipc_meknes"
+  config:
+    sheet_name: "mek"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Tanger"
+  table_name: "ipc_tanger"
+  config:
+    sheet_name: "tang"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Laâyoune"
+  table_name: "ipc_laayoune"
+  config:
+    sheet_name: "laay"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Dakhla"
+  table_name: "ipc_dakhla"
+  config:
+    sheet_name: "dakh"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Guelmim"
+  table_name: "ipc_guelmim"
+  config:
+    sheet_name: "guel"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Settat"
+  table_name: "ipc_settat"
+  config:
+    sheet_name: "sett"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Safi"
+  table_name: "ipc_safi"
+  config:
+    sheet_name: "saf"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Béni Mellal"
+  table_name: "ipc_beni_mellal"
+  config:
+    sheet_name: "beni mel"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation : ville de Al Hoceima"
+  table_name: "ipc_al_hoceima"
+  config:
+    sheet_name: "al hoceima"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    config:
+      skipfooter: 4
+    years: 
+      2019: 
+  - version: 2
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
+- name: "Indice des prix à la consommation :ville de Errachidia"
+  table_name: "ipc_errachidia"
+  config:
+    sheet_name: "errachidia"
+    historic_years: 3
+    type: index
+    base_year_cell: "A:6"
+    skiprows: [0, 1, 2, 3, 4, 6, 7]
+    skipfooter: 6
+    dimension_cols_index: [0,4]
+    dimension_cols_rename: ["libelle_fr", "libelle_ar"]
+  
+  versions: 
+  - version: 1
+    years:
+      2020:
+        config:
+          historic_years: 2
+          dimension_cols_index: [0,3]
+      2021:
+      2022: 
 # - name: "Prix moyens de détail observés pour certains produits dans la ville de Casablanca"
 # - name: "Prix moyens de détail observés pour certains services dans la ville de Casablanca"
 # - name: "Prix réglementés pour certains produits de tabac"
