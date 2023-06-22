@@ -1,13 +1,5 @@
-{{ 
-    config(
-        materialized='external',
-        location="{{ env_var('DWH_DATA') }}/{{ model.config.database }}/{{ model.config.group }}/{{ model.name }}.parquet"
-    ) 
-}}
-
-
 with source as (
-      select * from {{ source('indice_des_prix', 'ipc_national_v1') }}
+      select * from {{ source('indice_des_prix', 'ipc_agadir_v1') }}
 ),
 renamed as (
     select

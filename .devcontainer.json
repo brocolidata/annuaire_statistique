@@ -1,8 +1,6 @@
 {
   "name": "Data Platform Lab",
-  "build":{
-    "dockerfile":"./Dockerfile"
-  },
+  "image": "brocolidata/dataplatform_lab",
   "runArgs": [
     "--env-file",".env",
     "--name", "dataplatform_lab"
@@ -20,6 +18,7 @@
     "vscode": {
       "extensions": [
         "innoverio.vscode-dbt-power-user",
+        "ms-toolsai.jupyter",
         "ms-toolsai.vscode-jupyter-cell-tags",
         "yy0931.vscode-sqlite3-editor"
       ],

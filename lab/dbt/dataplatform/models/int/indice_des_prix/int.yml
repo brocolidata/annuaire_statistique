@@ -1,13 +1,7 @@
 models:
-  - name: ipp
-    access: public
-    config:
-      group: indice_des_prix
+  - name: pivoted_ipc_national
     description: >
-      Industrial, energy and mining producer price index
-
-      
-      [Preview data in GitHub](https://github.com/brocolidata/annuaire_statistique/blob/main/lab/dwh_data/ods/indice_des_prix/ipp.csv)
+      Pivoting & unioning stg ipc_national data
     columns:
       - name: libelle_fr
         description: "French label"
@@ -33,51 +27,10 @@ models:
         description: "Base year of the index (Base 100)"
         tests:
           - not_null
-
-  - name: ipc_national
-    access: public
-    config:
-      group: indice_des_prix
+  
+  - name: pivoted_ipc_villes
     description: >
-      Consumer Price Index in moroccan urban areas
-
-
-      [Preview data in GitHub](https://github.com/brocolidata/annuaire_statistique/blob/main/lab/dwh_data/ods/indice_des_prix/ipc_national.csv)
-    columns:
-      - name: libelle_fr
-        description: "French label"
-        tests:
-          - not_null
-
-      - name: libelle_ar
-        description: "Arabic label"
-        tests:
-          - not_null
-
-      - name: year
-        description: "Year of the record"
-        tests:
-          - not_null
-
-      - name: value
-        description: "Value of the record"
-        tests:
-          - not_null
-
-      - name: base_year
-        description: "Base year of the index (Base 100)"
-        tests:
-          - not_null
-
-  - name: ipc_villes
-    access: public
-    config:
-      group: indice_des_prix
-    description: >
-      Consumer Price Index per city
-
-
-      [Preview data in GitHub](https://github.com/brocolidata/annuaire_statistique/blob/main/lab/dwh_data/ods/indice_des_prix/ipc_villes.csv)
+      Pivoting & unioning stg ipc_villes data
     columns:
       - name: libelle_fr
         description: "French label"
@@ -108,3 +61,34 @@ models:
         description: "Base year of the index (Base 100)"
         tests:
           - not_null
+  
+  - name: pivoted_ipp
+    description: >
+      Pivoting & unioning stg ipp data
+    columns:
+      - name: libelle_fr
+        description: "French label"
+        tests:
+          - not_null
+
+      - name: libelle_ar
+        description: "Arabic label"
+        tests:
+          - not_null
+
+      - name: year
+        description: "Year of the record"
+        tests:
+          - not_null
+
+      - name: value
+        description: "Value of the record"
+        tests:
+          - not_null
+
+      - name: base_year
+        description: "Base year of the index (Base 100)"
+        tests:
+          - not_null
+
+  

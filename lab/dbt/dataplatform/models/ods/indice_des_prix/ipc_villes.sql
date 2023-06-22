@@ -6,14 +6,15 @@
     ) 
 }}
 
-with pivoted_ipp as (
+with ipc_villes as (
     select
         libelle_fr,
         libelle_ar,
         year,
         value,
+        city,
         base_year
-    from {{ ref("pivoted_ipp") }}
+    from {{ ref("pivoted_ipc_villes") }}
 )
 
-select * from pivoted_ipp
+select * from ipc_villes
