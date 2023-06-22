@@ -33,3 +33,5 @@ models:
       +database: "stg"
     ods:
       +database: "ods"
+    int:
+      +database: "int"

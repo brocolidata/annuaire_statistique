@@ -11,5 +11,7 @@ dataplatform_local:
       attach:
         - path: "{{ env_var('DUCKDB_DATA') }}/stg_duck.db"
           alias: "stg"
+        - path: "{{ env_var('DUCKDB_DATA') }}/int_duck.db"
+          alias: "int"
         - path: "{{ env_var('DUCKDB_DATA') }}/ods_duck.db"
           alias: "ods"
