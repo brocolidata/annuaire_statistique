@@ -1,11 +1,3 @@
-{{ 
-    config(
-        materialized='external',
-        location="{{ env_var('DWH_DATA') }}/{{ model.config.database }}/{{ model.config.group }}/{{ model.name }}.parquet"
-    ) 
-}}
-
-
 with source as (
       select * from {{ source('indice_des_prix', 'ipc_settat_v1') }}
 ),
