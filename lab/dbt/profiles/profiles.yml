@@ -9,9 +9,9 @@ dataplatform_local:
         - httpfs
         - parquet
       attach:
-        - path: "{{ env_var('DUCKDB_DATA') }}/stg_duck.db"
+        - path: "{{ env_var('DUCKDB_DATA') }}/stg.duckdb"
           alias: "stg"
-        - path: "{{ env_var('DUCKDB_DATA') }}/int_duck.db"
+        - path: "{{ env_var('DUCKDB_DATA') }}/int.duckdb"
           alias: "int"
-        - path: "{{ env_var('DUCKDB_DATA') }}/ods_duck.db"
+        - path: "{{ env_var('DUCKDB_DATA') }}/ods.duckdb"
           alias: "ods"
