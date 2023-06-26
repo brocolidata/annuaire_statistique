@@ -1,5 +1,5 @@
 with source as (
-      select * from {{ source('indice_des_prix', 'ipc_agadir_v1') }}
+      select * from {{ source('indice_des_prix', 'ipc_tanger_v1') }}
 ),
 renamed as (
     select
