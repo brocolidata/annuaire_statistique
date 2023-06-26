@@ -9,6 +9,8 @@
   "remoteEnv": {
     "DBT_PROFILES_DIR": "${containerWorkspaceFolder}/dbt/profiles",
     "DBT_PROJECT_DIR": "${containerWorkspaceFolder}/dbt/dataplatform",
+    "DBT_TARGET_PATH": "${containerWorkspaceFolder}/dbt/dataplatform/target",
+    "DBT_LOG_PATH":"${containerWorkspaceFolder}/dbt/dataplatform/logs",
     "DUCKDB_DATA": "${containerWorkspaceFolder}/duckdb_data",
     "DWH_DATA": "${containerWorkspaceFolder}/dwh_data"
   },
