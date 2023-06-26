@@ -1,4 +1,48 @@
 sources:
+  - name: ponderation_prix_HC
+    description: >
+      Data provided by Ghassan Waïl El Karmouni in the Medias24 article 
+      [L’inflation : comment elle est calculée, de quoi est composé le panier de référence](https://medias24.com/2023/04/03/linflation-comment-elle-est-calculee-de-quoi-est-compose-le-panier-de-reference/)
+
+      
+      [Source](https://medias24.com/content/uploads/2023/03/13/ponderation_prix_HC.pdf)
+
+    loader: 'Manual Download'
+    
+    tables:
+      - name: ponderation_ipc
+        description: >
+          Consumer Price Index basket weights
+        meta:
+          external_location: >
+            read_csv(
+              '{{ env_var("DWH_DATA") }}/raw/indice_des_prix/ponderation_ICP.csv',
+              delim='|', 
+              header=true,
+              columns={'code': 'INTEGER', 'element_panier': 'VARCHAR', 'ponderation_2006': 'DOUBLE', 'ponderation_2017': 'DOUBLE'},
+              decimal_separator=','
+            )
+          formatter: oldstyle
+
+        columns:
+          - name: code
+            description: "ID of the basket element"
+            tests:
+              - unique
+              - not_null
+          - name: element_panier
+            description: "Label of the basket element"
+            tests:
+              - not_null
+          - name: ponderation_2006
+            description: "2006 ponderation of the element in the basket"
+            tests:
+              - not_null
+          - name: ponderation_2017
+            description: "2017 ponderation of the element in the basket"
+            tests:
+              - not_null
+              
   - name: indice_des_prix
     description: >
       Price Index Data in Morocco

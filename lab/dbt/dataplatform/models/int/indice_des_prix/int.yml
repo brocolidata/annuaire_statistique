@@ -91,4 +91,34 @@ models:
         tests:
           - not_null
 
+  - name: process_ponderation_levels
+    description: >
+      Add basket_elements level and order
+    columns:
+      - name: code
+        description: "ID of the basket element"
+        tests:
+          - unique
+          - not_null
+      - name: element_panier
+        description: "Label of the basket element"
+        tests:
+          - not_null
+      - name: level
+        description: "Level of the 'element_panier'"
+      - name: basket_order
+        description: "Order of the 'element_panier'"
+        tests:
+          - unique
+          - not_null
+      - name: parent
+        description: "Parent of the 'element_panier'"
+      - name: ponderation_2006
+        description: "2006 ponderation of the element in the basket"
+        tests:
+          - not_null
+      - name: ponderation_2017
+        description: "2017 ponderation of the element in the basket"
+        tests:
+          - not_null
   

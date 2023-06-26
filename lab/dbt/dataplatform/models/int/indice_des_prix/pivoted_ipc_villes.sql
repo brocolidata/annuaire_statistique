@@ -90,6 +90,15 @@ unioned_ipc as (
     select * from {{model}}_year
     {% if not loop.last %}union{% endif %}  
     {% endfor -%}
+),
+
+formated_fr_label as (
+    select 
+        * exclude (libelle_fr),
+        upper(
+            strip_accents(libelle_fr)
+        ) as libelle_fr
+    from unioned_ipc
 )
 
-select * from unioned_ipc
+select * from formated_fr_label
