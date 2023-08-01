@@ -1,4 +1,6 @@
-hydra-core
+omegaconf
 openpyxl
 rarfile
 duckdb-engine
+pytest
+pytest-mock
