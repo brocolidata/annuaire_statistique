@@ -12,7 +12,9 @@
     "DBT_TARGET_PATH": "${containerWorkspaceFolder}/dbt/dataplatform/target",
     "DBT_LOG_PATH":"${containerWorkspaceFolder}/dbt/dataplatform/logs",
     "DUCKDB_DATA": "${containerWorkspaceFolder}/duckdb_data",
-    "DWH_DATA": "${containerWorkspaceFolder}/dwh_data"
+    "DWH_DATA": "${containerWorkspaceFolder}/dwh_data",
+    "DATA_PATH":"${containerWorkspaceFolder}/dwh_data",
+    "SPREADSHEET_EXTRACTOR_CONFIG_PATH":"${containerWorkspaceFolder}/notebooks/sources"
   },
   "workspaceMount": "source=${localWorkspaceFolder}/,target=/dataplatform_lab,type=bind",
   "workspaceFolder": "/dataplatform_lab/lab",
