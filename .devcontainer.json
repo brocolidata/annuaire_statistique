@@ -1,6 +1,6 @@
 {
   "name": "Data Platform Lab",
-  "image": "brocolidata/dataplatform_lab",
+  "image": "brocolidata/dataplatform_lab:main",
   "runArgs": [
     "--env-file",".env",
     "--name", "dataplatform_lab"
