@@ -9,3 +9,28 @@ file_paths:
   2020: "Annuaire Statistique 2020/3.AGRICULTURE A.S2020.xlsx"
   2019: "Annuaire Statistique 2019/2.1 Agriculture 2019.xlsx"
 read_and_write: [2019,2020,2021, 2022]
+datasets:
+- name: "Evolution des superficies cultivées"
+  table_name: "AG, 1"
+  config:
+    sheet_name: "AG, 1"
+    historic_years: 3
+    data_cells_range: "A7:E45"
+    columns_cells_range: "A5:E5"
+    dimension_cols_index: [0,4]
+    merge_strategy: merge_multiline_labels
+  data_ranges:
+    2019:
+      version: 1
+      config:
+        sheet_name : "1"
+    2020:
+      version: 2
+      config:
+        data_cells_range: "A7:E44"
+    2021:
+      version: 2
+      
+    2022:
+      version: 2   
+    
