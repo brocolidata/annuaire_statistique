@@ -1,1221 +1,1293 @@
 sources:
-  - name: ponderation_prix_HC
-    description: >
-      Data provided by Ghassan Waïl El Karmouni in the Medias24 article 
-      [L’inflation : comment elle est calculée, de quoi est composé le panier de référence](https://medias24.com/2023/04/03/linflation-comment-elle-est-calculee-de-quoi-est-compose-le-panier-de-reference/)
+  # - name: ponderation_prix_HC
+  #   description: >
+  #     Data provided by Ghassan Waïl El Karmouni in the Medias24 article 
+  #     [L’inflation : comment elle est calculée, de quoi est composé le panier de référence](https://medias24.com/2023/04/03/linflation-comment-elle-est-calculee-de-quoi-est-compose-le-panier-de-reference/)
 
       
-      [Source](https://medias24.com/content/uploads/2023/03/13/ponderation_prix_HC.pdf)
+  #     [Source](https://medias24.com/content/uploads/2023/03/13/ponderation_prix_HC.pdf)
 
-    loader: 'Manual Download'
+  #   loader: 'Manual Download'
     
-    tables:
-      - name: ponderation_ipc
-        description: >
-          Consumer Price Index basket weights
-        meta:
-          external_location: >
-            read_csv(
-              '{{ env_var("DWH_DATA") }}/raw/indice_des_prix/ponderation_ICP.csv',
-              delim='|', 
-              header=true,
-              columns={'code': 'INTEGER', 'element_panier': 'VARCHAR', 'ponderation_2006': 'DOUBLE', 'ponderation_2017': 'DOUBLE'},
-              decimal_separator=','
-            )
-          formatter: oldstyle
+  #   tables:
+  #     - name: ponderation_ipc
+  #       description: >
+  #         Consumer Price Index basket weights
+  #       meta:
+  #         external_location: >
+  #           read_csv(
+  #             '{{ env_var("DWH_DATA") }}/raw/indice_des_prix/ponderation_ICP.csv',
+  #             delim='|', 
+  #             header=true,
+  #             columns={'code': 'INTEGER', 'element_panier': 'VARCHAR', 'ponderation_2006': 'DOUBLE', 'ponderation_2017': 'DOUBLE'},
+  #             decimal_separator=','
+  #           )
+  #         formatter: oldstyle
 
-        columns:
-          - name: code
-            description: "ID of the basket element"
-            tests:
-              - unique
-              - not_null
-          - name: element_panier
-            description: "Label of the basket element"
-            tests:
-              - not_null
-          - name: ponderation_2006
-            description: "2006 ponderation of the element in the basket"
-            tests:
-              - not_null
-          - name: ponderation_2017
-            description: "2017 ponderation of the element in the basket"
-            tests:
-              - not_null
+  #       columns:
+  #         - name: code
+  #           description: "ID of the basket element"
+  #           tests:
+  #             - unique
+  #             - not_null
+  #         - name: element_panier
+  #           description: "Label of the basket element"
+  #           tests:
+  #             - not_null
+  #         - name: ponderation_2006
+  #           description: "2006 ponderation of the element in the basket"
+  #           tests:
+  #             - not_null
+  #         - name: ponderation_2017
+  #           description: "2017 ponderation of the element in the basket"
+  #           tests:
+  #             - not_null
               
-  - name: indice_des_prix
+  # - name: indice_des_prix
+  #   description: >
+  #     Price Index Data in Morocco
+
+  #   loader: 'Jupyter Notebook'
+  #   meta:
+  #     external_location: "{{ env_var('DWH_DATA') }}/raw/indice_des_prix/{name}.parquet"
+  #   tables:
+  #     - name: ipp_v1
+  #       description: >
+  #         Industrial, energy and mining producer price index (2019-2020)
+
+  #         - **Base 100** : 2010
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipp_v2
+  #       description: >
+  #         Industrial, energy and mining producer price index (2021-2022)
+
+  #         - **Base 100** : 2018
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_national_v1
+  #       description: >
+  #         Consumer Price Index in moroccan urban areas (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_national_v2
+  #       description: >
+  #         Consumer Price Index in moroccan areas (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_agadir_v1
+  #       description: >
+  #         Consumer Price Index in Agadir (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_agadir_v2
+  #       description: >
+  #         Consumer Price Index in Agadir (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_casablanca_v1
+  #       description: >
+  #         Consumer Price Index in Casablanca (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_casablanca_v2
+  #       description: >
+  #         Consumer Price Index in Casablanca (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_fes_v1
+  #       description: >
+  #         Consumer Price Index in Fes (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_fes_v2
+  #       description: >
+  #         Consumer Price Index in Fes (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_kenitra_v1
+  #       description: >
+  #         Consumer Price Index in Kenitra (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_kenitra_v2
+  #       description: >
+  #         Consumer Price Index in Kenitra (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_marrakech_v1
+  #       description: >
+  #         Consumer Price Index in Marrakech (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_marrakech_v2
+  #       description: >
+  #         Consumer Price Index in Marrakech (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_oujda_v1
+  #       description: >
+  #         Consumer Price Index in Oujda (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_oujda_v2
+  #       description: >
+  #         Consumer Price Index in Oujda (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_rabat_v1
+  #       description: >
+  #         Consumer Price Index in Rabat (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_rabat_v2
+  #       description: >
+  #         Consumer Price Index in Rabat (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_tetouan_v1
+  #       description: >
+  #         Consumer Price Index in Tetouan (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_tetouan_v2
+  #       description: >
+  #         Consumer Price Index in Tetouan (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_meknes_v1
+  #       description: >
+  #         Consumer Price Index in Meknes (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_meknes_v2
+  #       description: >
+  #         Consumer Price Index in Meknes (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_tanger_v1
+  #       description: >
+  #         Consumer Price Index in Tanger (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_tanger_v2
+  #       description: >
+  #         Consumer Price Index in Tanger (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_laayoune_v1
+  #       description: >
+  #         Consumer Price Index in Laayoune (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_laayoune_v2
+  #       description: >
+  #         Consumer Price Index in Laayoune (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_dakhla_v1
+  #       description: >
+  #         Consumer Price Index in Dakhla (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_dakhla_v2
+  #       description: >
+  #         Consumer Price Index in Dakhla (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_guelmim_v1
+  #       description: >
+  #         Consumer Price Index in Guelmim (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_guelmim_v2
+  #       description: >
+  #         Consumer Price Index in Guelmim (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_settat_v1
+  #       description: >
+  #         Consumer Price Index in Settat (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_settat_v2
+  #       description: >
+  #         Consumer Price Index in Settat (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_safi_v1
+  #       description: >
+  #         Consumer Price Index in Safi (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_safi_v2
+  #       description: >
+  #         Consumer Price Index in Safi (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_beni_mellal_v1
+  #       description: >
+  #         Consumer Price Index in Beni Mellal (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_beni_mellal_v2
+  #       description: >
+  #         Consumer Price Index in Beni Mellal (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_al_hoceima_v1
+  #       description: >
+  #         Consumer Price Index in Al Hoceima (2019)
+
+  #         - **Base 100** : 2006
+
+  #         - **Elements in market basket** : 478
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #         - name: '2017'
+  #           description: "Value for year 2017"
+  #           tests:
+  #             - not_null
+  #         - name: '2016'
+  #           description: "Value for year 2016"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_al_hoceima_v2
+  #       description: >
+  #         Consumer Price Index in Al Hoceima (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null
+  #     - name: ipc_errachidia_v1
+  #       description: >
+  #         Consumer Price Index in Errachidia (2020-2022)
+
+  #         - **Base 100** : 2017
+
+  #         - **Elements in market basket** : 546
+  #       columns:
+  #         - name: libelle_fr
+  #           description: "French label"
+  #           tests:
+  #             - not_null
+  #         - name: libelle_ar
+  #           description: "Arabic label"
+  #           tests:
+  #             - not_null
+  #         - name: '2021'
+  #           description: "Value for year 2021"
+  #           tests:
+  #             - not_null
+  #         - name: '2020'
+  #           description: "Value for year 2020"
+  #           tests:
+  #             - not_null
+  #         - name: '2019'
+  #           description: "Value for year 2019"
+  #           tests:
+  #             - not_null
+  #         - name: '2018'
+  #           description: "Value for year 2018"
+  #           tests:
+  #             - not_null 
+  
+  - name: population
     description: >
-      Price Index Data in Morocco
+      Population Data in Morocco
 
     loader: 'Jupyter Notebook'
-    meta:
-      external_location: "{{ env_var('DWH_DATA') }}/raw/indice_des_prix/{name}.parquet"
+    meta: 
+      external_location: "{{ env_var('DWH_DATA') }}/raw/population/{name}.parquet"
     tables:
-      - name: ipp_v1
+      - name: pop_age_sex_resid18
         description: >
-          Industrial, energy and mining producer price index (2019-2020)
-
-          - **Base 100** : 2010
+          population selon le groupe d'âge,le sex et le milieu de résidence (en milliers) - 2018
         columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipp_v2
+          - name: Groupe d'âge
+            description: "label des groupe d'âge en français"
+          - name: '      Ensemble'
+            description: "l'ensemble de population selon le groupe d'âge et le sexe"
+          - name: '      Rural'
+            description: "nombre des gens résidants dans le milieu rural "
+          - name: '     Urbain'
+            description: "nombre des gens résidants dans le milieu urbain " 
+          - name: 'الفئة العمرية'
+            description: "label des groupe d'âge en arabe"
+
+
+
+      - name: pop_age_sex_resid19
         description: >
-          Industrial, energy and mining producer price index (2021-2022)
-
-          - **Base 100** : 2018
+          population selon le groupe d'âge,le sex et le milieu de résidence (en milliers) - 2019
         columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-      - name: ipc_national_v1
+          - name: Groupe d'âge
+            description: "label des groupe d'âge en français"
+          - name: '      Ensemble'
+            description: "l'ensemble de population selon le groupe d'âge et le sexe"
+          - name: '      Rural'
+            description: "nombre des gens résidants dans le milieu rural "
+          - name: '     Urbain'
+            description: "nombre des gens résidants dans le milieu urbain " 
+          - name: 'الفئة العمرية'
+            description: "label des groupe d'âge en arabe"
+
+
+
+      - name: pop_age_sex_resid20
         description: >
-          Consumer Price Index in moroccan urban areas (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
+          population selon le groupe d'âge,le sex et le milieu de résidence (en milliers) - 2020
         columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_national_v2
+          - name: Groupe d'âge
+            description: "label des groupe d'âge en français"
+          - name: '      Ensemble'
+            description: "l'ensemble de population selon le groupe d'âge et le sexe"
+          - name: '      Rural'
+            description: "nombre des gens résidants dans le milieu rural "
+          - name: '     Urbain'
+            description: "nombre des gens résidants dans le milieu urbain " 
+          - name: 'الفئة العمرية'
+            description: "label des groupe d'âge en arabe"
+
+      - name: pop_age_sex_resid21
         description: >
-          Consumer Price Index in moroccan areas (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
+          population selon le groupe d'âge,le sex et le milieu de résidence (en milliers) - 2021
         columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_agadir_v1
-        description: >
-          Consumer Price Index in Agadir (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_agadir_v2
-        description: >
-          Consumer Price Index in Agadir (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_casablanca_v1
-        description: >
-          Consumer Price Index in Casablanca (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_casablanca_v2
-        description: >
-          Consumer Price Index in Casablanca (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_fes_v1
-        description: >
-          Consumer Price Index in Fes (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_fes_v2
-        description: >
-          Consumer Price Index in Fes (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_kenitra_v1
-        description: >
-          Consumer Price Index in Kenitra (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_kenitra_v2
-        description: >
-          Consumer Price Index in Kenitra (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_marrakech_v1
-        description: >
-          Consumer Price Index in Marrakech (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_marrakech_v2
-        description: >
-          Consumer Price Index in Marrakech (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_oujda_v1
-        description: >
-          Consumer Price Index in Oujda (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_oujda_v2
-        description: >
-          Consumer Price Index in Oujda (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_rabat_v1
-        description: >
-          Consumer Price Index in Rabat (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_rabat_v2
-        description: >
-          Consumer Price Index in Rabat (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_tetouan_v1
-        description: >
-          Consumer Price Index in Tetouan (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_tetouan_v2
-        description: >
-          Consumer Price Index in Tetouan (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_meknes_v1
-        description: >
-          Consumer Price Index in Meknes (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_meknes_v2
-        description: >
-          Consumer Price Index in Meknes (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_tanger_v1
-        description: >
-          Consumer Price Index in Tanger (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_tanger_v2
-        description: >
-          Consumer Price Index in Tanger (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_laayoune_v1
-        description: >
-          Consumer Price Index in Laayoune (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_laayoune_v2
-        description: >
-          Consumer Price Index in Laayoune (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_dakhla_v1
-        description: >
-          Consumer Price Index in Dakhla (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_dakhla_v2
-        description: >
-          Consumer Price Index in Dakhla (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_guelmim_v1
-        description: >
-          Consumer Price Index in Guelmim (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_guelmim_v2
-        description: >
-          Consumer Price Index in Guelmim (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_settat_v1
-        description: >
-          Consumer Price Index in Settat (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_settat_v2
-        description: >
-          Consumer Price Index in Settat (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_safi_v1
-        description: >
-          Consumer Price Index in Safi (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_safi_v2
-        description: >
-          Consumer Price Index in Safi (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_beni_mellal_v1
-        description: >
-          Consumer Price Index in Beni Mellal (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_beni_mellal_v2
-        description: >
-          Consumer Price Index in Beni Mellal (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_al_hoceima_v1
-        description: >
-          Consumer Price Index in Al Hoceima (2019)
-
-          - **Base 100** : 2006
-
-          - **Elements in market basket** : 478
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-          - name: '2017'
-            description: "Value for year 2017"
-            tests:
-              - not_null
-          - name: '2016'
-            description: "Value for year 2016"
-            tests:
-              - not_null
-      - name: ipc_al_hoceima_v2
-        description: >
-          Consumer Price Index in Al Hoceima (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
-      - name: ipc_errachidia_v1
-        description: >
-          Consumer Price Index in Errachidia (2020-2022)
-
-          - **Base 100** : 2017
-
-          - **Elements in market basket** : 546
-        columns:
-          - name: libelle_fr
-            description: "French label"
-            tests:
-              - not_null
-          - name: libelle_ar
-            description: "Arabic label"
-            tests:
-              - not_null
-          - name: '2021'
-            description: "Value for year 2021"
-            tests:
-              - not_null
-          - name: '2020'
-            description: "Value for year 2020"
-            tests:
-              - not_null
-          - name: '2019'
-            description: "Value for year 2019"
-            tests:
-              - not_null
-          - name: '2018'
-            description: "Value for year 2018"
-            tests:
-              - not_null
+          - name: Groupe d'âge
+            description: "label des groupe d'âge en français"
+          - name: '      Ensemble'
+            description: "l'ensemble de population selon le groupe d'âge et le sexe"
+          - name: '      Rural'
+            description: "nombre des gens résidants dans le milieu rural "
+          - name: '     Urbain'
+            description: "nombre des gens résidants dans le milieu urbain " 
+          - name: 'الفئة العمرية'
+            description: "label des groupe d'âge en arabe"

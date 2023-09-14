@@ -1,0 +1,148 @@
+name: "Population"
+periodicity: year
+schema: "population"
+config:
+  output_format: parquet
+file_paths:
+  2022: Annuaire Statistique 2022/2. population_AS 2022.xlsx
+  2021: Annuaire Statistique 2021/2.1 Population 2021.xlsx
+  2020: Annuaire Statistique 2020/2.population A.S2020.xlsx
+  2019: Annuaire Statistique 2019/1.1 Population 2019.xlsx
+
+datasets:
+# - name: "  2 -2 Population par région et milieu de résidence "
+#   table_name: "2"
+#   config:
+#     sheet_name: "2"
+#     historic_periods: 3
+#     # type: index
+#     base_year_cell: "A7"
+#     data_cells_range: "A7:G45"
+#     columns_cells_range: "A7:G45"
+#     dimension_cols_index: [0,2,3,4,6]
+#     # dimension_cols_rename:  ["libelle_fr", "2018","2017","2014",ibelle_ar"]
+#     merge_strategy: merge_categories_and_elements
+#   data_ranges:
+#     2019:
+#       version: 1
+#       config:
+#         data_cells_range: "A7:G45"
+#         dimension_cols_index: [0,2,3,4,6]
+#     2020:
+#       version: 2
+#       config:
+#         data_cells_range: "A7:G45"
+#         dimension_cols_index: [0,2,3,4,6]
+
+#     2021:
+#       version: 3
+#       config:
+#         data_cells_range: "A7:G45"
+#         dimension_cols_index: [0,1,2,3,4,5]
+#     2022:
+#       version: 4
+#       config:
+#         data_cells_range: "A7:G45"
+
+
+# - name: " 2 - 3 Structure de la population par région selon les grands groupes d'âges (en %) "
+#   table_name: "3"
+#   config:
+#     sheet_name: "3"
+#     historic_periods: 3
+#     # type: index
+#     base_year_cell: "A10"
+#     data_cells_range: "A10:H22"
+#     columns_cells_range: "A10:H22"
+#     dimension_cols_index: [1,2,3,4,5,6]
+#     # dimension_cols_rename:  ["libelle_fr", "2018","2017","2014",ibelle_ar"]
+#     merge_strategy: merge_multiline_labels
+#   data_ranges:
+#     2019:
+#       version: 1
+#       config:
+#         data_cells_range: "A10:H22"
+
+#     2020:
+#       version: 2
+#       config:
+#         data_cells_range: "A10:H22"
+#     2021:
+#       version: 3
+#       config:
+#         data_cells_range: "A10:H22"
+
+#     2022:
+#       version: 4
+#       config:
+#         data_cells_range: "A10:H22"
+
+# - name: " 2 - 3 Structure de la population par région selon les grands groupes d'âges (en %) "
+#   table_name: "3"
+#   config:
+#     sheet_name: "3"
+#     historic_periods: 3
+#     # type: index
+#     base_year_cell: "A10"
+#     data_cells_range: "A10:H22"
+#     columns_cells_range: "A10:H22"
+#     dimension_cols_index: [0,7]
+#     # dimension_cols_rename:  ["libelle_fr", "2018","2017","2014",ibelle_ar"]
+#     merge_strategy: merge_multiline_labels
+#   data_ranges:
+#     2019:
+#       version: labels_fr_ar
+#       config:
+#         data_cells_range: "A10:H22"
+
+
+
+
+- name: "  2 - 4 Population selon le groupe d'âge, le sexe et le milieu de résidence (en milliers) (1)"
+  table_name: "4"
+  config:
+    sheet_name: "4"
+    historic_periods: 3
+    # type: index
+    base_year_cell: "A9"
+    data_cells_range: "A9:E62"
+    columns_cells_range: "A9:E62"
+    dimension_cols_index: [0,1,2,3]
+    # dimension_cols_rename:  ["libelle_fr", "2018","2017","2014",ibelle_ar"]
+    merge_strategy: merge_categories_and_elements
+  data_ranges:
+    2019:
+      version: 1
+      config:
+        data_cells_range: "A9:E62"
+
+    2020:
+      version: 2
+      config:
+        data_cells_range: "A9:E62"
+    2021:
+      version: 3
+      config:
+        data_cells_range: "A9:E62"
+
+    2022:
+      version: 4
+      config:
+        data_cells_range: "A9:E62"
+- name: "  2 - 4 Population selon le groupe d'âge, le sexe et le milieu de résidence (en milliers) (1)"
+  table_name: "4"
+  config:
+    sheet_name: "4"
+    historic_periods: 3
+    # type: index
+    base_year_cell: "A9"
+    data_cells_range: "A9:E62"
+    columns_cells_range: "A9:E62"
+    dimension_cols_index: [4]
+    # dimension_cols_rename:  ["libelle_fr", "2018","2017","2014",ibelle_ar"]
+    merge_strategy: merge_categories_and_elements
+  data_ranges:
+    2019:
+      version: labels_fr_ar
+      config:
+        data_cells_range: "A9:E62"

@@ -1,4 +1,7 @@
 groups:
-  - name: indice_des_prix
+  # - name: indice_des_prix
+  #   owner:
+  #     name: HCP
+  - name: population
     owner:
       name: HCP

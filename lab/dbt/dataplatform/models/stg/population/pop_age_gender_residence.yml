@@ -1,0 +1,60 @@
+
+version: 2
+
+models:
+  - name: pop_age_gender_residence18_stg
+    description: "population selon le groupe d'âge,le sex et le milieu de résidence (en milliers) - 2018"
+    columns:
+      - name: groupe_âge_fr
+        description: "label des groupe d'âge en français"
+      - name: ensemble
+        description: "l'ensemble de population selon le groupe d'âge et le sexe"
+      - name: 'rural'
+        description: "nombre des gens résidants dans le milieu rural "
+      - name: 'urbain'
+        description: "nombre des gens résidants dans le milieu urbain "
+      - name: 'groupe_âge_ar'
+        description: "label des groupe d'âge en arabe"
+
+  - name: pop_age_gender_residence19_stg
+    description: "population selon le groupe d'âge,le sex et le milieu de résidence (en millers) pour l'année 2019"
+    columns:
+      - name: groupe_âge_fr
+        description: "label des groupe d'âge en français"
+      - name: ensemble
+        description: "l'ensemble de population selon le groupe d'âge et le sexe"
+      - name: 'rural'
+        description: "nombre des gens résidants dans le milieu rural "
+      - name: 'urbain'
+        description: "nombre des gens résidants dans le milieu urbain "
+      - name: 'groupe_âge_ar'
+        description: "label des groupe d'âge en arabe"
+
+  - name: pop_age_gender_residence20_stg
+    description: "population selon le groupe d'âge,le sex et le milieu de résidence (en millers) pour l'année 2020"
+    columns:
+      - name: groupe_âge_fr
+        description: "label des groupe d'âge en français"
+      - name: ensemble
+        description: "l'ensemble de population selon le groupe d'âge et le sexe"
+      - name: 'rural'
+        description: "nombre des gens résidants dans le milieu rural "
+      - name: 'urbain'
+        description: "nombre des gens résidants dans le milieu urbain "
+      - name: 'groupe_âge_ar'
+        description: "label des groupe d'âge en arabe"
+
+  - name: pop_age_gender_residence21_stg
+    description: "population selon le groupe d'âge,le sex et le milieu de résidence (en millers) pour l'année 2021"
+    columns:
+      - name: groupe_âge_fr
+        description: "label des groupe d'âge en français"
+      - name: ensemble
+        description: "l'ensemble de population selon le groupe d'âge et le sexe"
+      - name: 'rural'
+        description: "nombre des gens résidants dans le milieu rural "
+      - name: 'urbain'
+        description: "nombre des gens résidants dans le milieu urbain "
+      - name: 'groupe_âge_ar'
+        description: "label des groupe d'âge en arabe"
+  

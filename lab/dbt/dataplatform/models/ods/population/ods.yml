@@ -1,0 +1,24 @@
+models:
+  - name: pop_age_gender_residence_ods
+    access: public
+    config:
+      group: population
+    description: >
+      population selon le groupe d'âge,le sex et le milieu de résidence (en milliers) entre 2018 et 2021
+    columns:
+      - name: age_group_fr
+        description: "label des groupe d'âge en français"
+      - name: gender_fr
+        description: "label de sexe en français"  
+      - name: ensemble
+        description: "l'ensemble de population selon le groupe d'âge et le sexe"
+      - name: 'rural'
+        description: "nombre des gens résidants dans le milieu rural "
+      - name: 'urbain'
+        description: "nombre des gens résidants dans le milieu urbain "
+      - name: 'age_group_ar'
+        description: "label des groupe d'âge en arabe"
+      - name: gender_ar
+        description: "label de sexe en arabe"  
+      - name: year
+        description: "année des statistiques"  
